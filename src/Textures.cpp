@@ -5,7 +5,7 @@
  * Constructor for a 2d RGB texture object
  * @param loc The path to the texture image
  */
-Texture::Texture(const char *loc, int color_mode, int input_color_mode, bool switch_orientation)
+Texture:: Texture(const char *loc, int color_mode, int input_color_mode, bool switch_orientation)
 {
     stbi_set_flip_vertically_on_load(switch_orientation);
 

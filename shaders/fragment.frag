@@ -1,8 +1,7 @@
 #version 330 core
 
 struct Material{
-    vec3 ambient;
-    vec3 diffuse;
+    sampler2D diffuse;
     vec3 specular;
     float shininess;
 };
@@ -19,8 +18,9 @@ out vec4 FragColor;
 
 in vec3 normal;
 in vec3 fragmentPos;
+in vec2 texture_coordinates;
 
-uniform vec3 object_color;
+uniform vec3 object_color; 
 uniform vec3 light_color;
 uniform vec3 lightPos;
 uniform vec3 viewPos;
@@ -45,12 +45,12 @@ vec3 calculate_phong_lighting(){
     vec3 diffuse_light = calculate_diffuse_light(light_dir, normalised_normal);
     vec3 specular_light = calculate_specular_light(light_dir, normalised_normal);
 
-    return object_color * (ambient_light + diffuse_light + specular_light);
+    return (ambient_light + diffuse_light + specular_light);
 }
 
 
 vec3 calculate_ambient_light(){
-    return light.ambient * material.ambient;
+    return light.ambient * vec3(texture(material.diffuse, texture_coordinates));
 }
 
 vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal){
@@ -58,7 +58,9 @@ vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal){
     // The dot product may go below 0, hence handle the case
     float corrected_diffuse_intensity_multiplier = max(diffuse_intensity_multiplier, 0.0f);
 
-    vec3 diffuse_intensity = light.diffuse * (material.diffuse * corrected_diffuse_intensity_multiplier);
+    vec3 diffuse_color = vec3(texture(material.diffuse, texture_coordinates));
+
+    vec3 diffuse_intensity = light.diffuse * (diffuse_color * corrected_diffuse_intensity_multiplier);
 
     return diffuse_intensity;
 }
