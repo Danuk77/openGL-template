@@ -2,7 +2,7 @@
 
 struct Material{
     sampler2D diffuse;
-    vec3 specular;
+    sampler2D specular;
     float shininess;
 };
 
@@ -74,7 +74,8 @@ vec3 calculate_specular_light(vec3 light_dir, vec3 normalised_normal){
     float corrected_reflected_light_intensity_multiplier = max(reflected_light_intensity_multiplier, 0.0f);
     float specular_light_intensity_multiplier = pow(corrected_reflected_light_intensity_multiplier, material.shininess);
 
-    vec3 specular_light_intensity = light.specular * (specular_light_intensity_multiplier * material.specular);
+    vec3 specular_map_intensity = vec3(texture(material.specular, texture_coordinates));
+    vec3 specular_light_intensity = light.specular * specular_light_intensity_multiplier * specular_map_intensity;
 
     return specular_light_intensity;
 }

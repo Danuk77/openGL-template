@@ -268,7 +268,7 @@ void draw_cube(Shader shader, unsigned int VAO, vec3 pos)
 }
 
 // The main render loop.
-void render_loop(GLFWwindow *&window, Shader main_shader, Shader light_shader, unsigned int main_VAO, unsigned int light_VAO, Texture diffuse_map)
+void render_loop(GLFWwindow *&window, Shader main_shader, Shader light_shader, unsigned int main_VAO, unsigned int light_VAO, Texture diffuse_map, Texture specular_map)
 {
     // Main render loop
     while (!glfwWindowShouldClose(window))
@@ -287,6 +287,9 @@ void render_loop(GLFWwindow *&window, Shader main_shader, Shader light_shader, u
 
         glActiveTexture(GL_TEXTURE0);
         diffuse_map.bind(GL_TEXTURE_2D);
+
+        glActiveTexture(GL_TEXTURE1);
+        specular_map.bind(GL_TEXTURE_2D);
 
         main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
         main_shader.set_float("material.shininess", 32.0f);
@@ -339,10 +342,17 @@ int main()
                         GL_RGBA,
                         false);
 
+    Texture specular_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2_specular.png",
+                         GL_RGB,
+                         GL_RGBA,
+                         false);
+
     new_shader.use();
     new_shader.set_int("material.diffuse", 0);
+    new_shader.set_int("material.specular", 1);
+
     // Call the render loop
-    render_loop(window, new_shader, light_shader, VAO, light_VAO, diffuse_map);
+    render_loop(window, new_shader, light_shader, VAO, light_VAO, diffuse_map, specular_map);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
