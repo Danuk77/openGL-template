@@ -33,7 +33,9 @@ bool firstMouse = true;
 const float sensitivity = 0.1f; // Mouse sensitivity
 
 vec3 main_cube_pos = vec3(0.0f, 1.0f, -1.0f);
-vec3 light_cube_pos = vec3(1.2f, 1.0f, -5.0f);
+vec3 secondary_cube_pos = glm::vec3(2.4f, -0.4f, -6.5f);
+vec3 light_direction = vec3(-0.2f, -1.0f, -0.3f);
+vec3 light_position = vec3(0.0f, 0.0f, 0.0f);
 
 // Callback function to handle the window resizing.
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
@@ -247,7 +249,7 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos)
     cameraFront = normalize(direction);
 }
 
-void draw_cube(Shader shader, unsigned int VAO, vec3 pos)
+void draw_cube(Shader shader, unsigned int VAO, vec3 pos, float angle)
 {
     glBindVertexArray(VAO);
     mat4 model(1.0f);
@@ -258,7 +260,9 @@ void draw_cube(Shader shader, unsigned int VAO, vec3 pos)
 
     projection = perspective(radians(45.0f), 800.0f / 600.0f, 0.01f, 100.0f);
     view = lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
     model = translate(model, pos);
+    model = rotate(model, radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 
     shader.set_mat4("projection", projection);
     shader.set_mat4("model", model);
@@ -268,7 +272,7 @@ void draw_cube(Shader shader, unsigned int VAO, vec3 pos)
 }
 
 // The main render loop.
-void render_loop(GLFWwindow *&window, Shader main_shader, Shader light_shader, unsigned int main_VAO, unsigned int light_VAO, Texture diffuse_map, Texture specular_map)
+void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO, Texture diffuse_map, Texture specular_map)
 {
     // Main render loop
     while (!glfwWindowShouldClose(window))
@@ -279,10 +283,10 @@ void render_loop(GLFWwindow *&window, Shader main_shader, Shader light_shader, u
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        draw_cube(main_shader, main_VAO, main_cube_pos);
+        draw_cube(main_shader, main_VAO, main_cube_pos, 0.0f);
+        draw_cube(main_shader, main_VAO, secondary_cube_pos, 55.6f);
         main_shader.set_vec3("object_color", vec3(1.0f, 0.5f, 0.31f));
         main_shader.set_vec3("light_color", vec3(1.0f, 1.0f, 1.0f));
-        main_shader.set_vec3("lightPos", light_cube_pos);
         main_shader.set_vec3("viewPos", cameraPos);
 
         glActiveTexture(GL_TEXTURE0);
@@ -294,11 +298,13 @@ void render_loop(GLFWwindow *&window, Shader main_shader, Shader light_shader, u
         main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
         main_shader.set_float("material.shininess", 32.0f);
 
+        main_shader.set_vec3("light.position", light_position);
         main_shader.set_vec3("light.ambient", vec3(0.2f, 0.2f, 0.2f));
         main_shader.set_vec3("light.diffuse", vec3(0.5f, 0.5f, 0.5f));
         main_shader.set_vec3("light.specular", vec3(1.0f, 1.0f, 1.0f));
-
-        draw_cube(light_shader, light_VAO, light_cube_pos);
+        main_shader.set_float("light.constant", 1.0f);
+        main_shader.set_float("light.linear", 0.09f);
+        main_shader.set_float("light.quadratic", 0.032f);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -325,17 +331,9 @@ int main()
     create_cube();
     link_vertex_attributes();
 
-    // For the second cube (the light source)
-    unsigned int light_VAO = create_VAO();
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    link_vertex_attributes();
-
     // Load our shader programs
     Shader new_shader("X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\vertex.vert",
                       "X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\fragment.frag");
-
-    Shader light_shader("X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\vertex.vert",
-                        "X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\light_source_fragment.frag");
 
     Texture diffuse_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2.png",
                         GL_RGB,
@@ -352,11 +350,10 @@ int main()
     new_shader.set_int("material.specular", 1);
 
     // Call the render loop
-    render_loop(window, new_shader, light_shader, VAO, light_VAO, diffuse_map, specular_map);
+    render_loop(window, new_shader, VAO, diffuse_map, specular_map);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteVertexArrays(1, &light_VAO);
 
     // Free up the resources once instructed to close
     glfwTerminate();

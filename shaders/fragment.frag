@@ -8,6 +8,10 @@ struct Material{
 
 struct Light{
     vec3 position;
+
+    float constant;
+    float linear;
+    float quadratic;
   
     vec3 ambient;
     vec3 diffuse;
@@ -28,9 +32,10 @@ uniform Material material;
 uniform Light light;
 
 vec3 calculate_phong_lighting();
-vec3 calculate_ambient_light();
-vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal);
-vec3 calculate_specular_light(vec3 light_dir, vec3 normalised_normal);
+vec3 calculate_ambient_light(float attenuation);
+vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal, float attenuation);
+vec3 calculate_specular_light(vec3 light_dir, vec3 normalised_normal, float attenuation);
+float calculate_attenuation(vec3 light_direction);
 
 void main()
 {
@@ -39,21 +44,32 @@ void main()
 
 vec3 calculate_phong_lighting(){
     vec3 normalised_normal = normalize(normal);
-    vec3 light_dir = normalize(lightPos - fragmentPos);
+    vec3 light_dir = normalize(light.position-fragmentPos);
+    float attenuation = calculate_attenuation(light_dir);
 
-    vec3 ambient_light = calculate_ambient_light();
-    vec3 diffuse_light = calculate_diffuse_light(light_dir, normalised_normal);
-    vec3 specular_light = calculate_specular_light(light_dir, normalised_normal);
+    vec3 ambient_light = calculate_ambient_light(attenuation);
+    vec3 diffuse_light = calculate_diffuse_light(light_dir, normalised_normal, attenuation);
+    vec3 specular_light = calculate_specular_light(light_dir, normalised_normal, attenuation);
 
     return (ambient_light + diffuse_light + specular_light);
 }
 
+float calculate_attenuation(vec3 light_direction){
+    float distance = length(light.position - fragmentPos);
+    
+    float linear_factor = light.linear * distance;
+    float quadratic_factor = light.quadratic * (distance * distance);
 
-vec3 calculate_ambient_light(){
-    return light.ambient * vec3(texture(material.diffuse, texture_coordinates));
+    float attenuation = 1.0f / (light.constant + linear_factor + quadratic_factor);
+    return attenuation;
 }
 
-vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal){
+
+vec3 calculate_ambient_light(float attenuation){
+    return attenuation * light.ambient * vec3(texture(material.diffuse, texture_coordinates));
+}
+
+vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal, float attenuation){
     float diffuse_intensity_multiplier = dot(normalised_normal, light_dir);
     // The dot product may go below 0, hence handle the case
     float corrected_diffuse_intensity_multiplier = max(diffuse_intensity_multiplier, 0.0f);
@@ -62,10 +78,10 @@ vec3 calculate_diffuse_light(vec3 light_dir, vec3 normalised_normal){
 
     vec3 diffuse_intensity = light.diffuse * (diffuse_color * corrected_diffuse_intensity_multiplier);
 
-    return diffuse_intensity;
+    return attenuation * diffuse_intensity;
 }
 
-vec3 calculate_specular_light(vec3 light_dir, vec3 normalised_normal){
+vec3 calculate_specular_light(vec3 light_dir, vec3 normalised_normal, float attenuation){
     vec3 viewDir = normalize(viewPos - fragmentPos);
     vec3 reflectDir = reflect(-light_dir, normal);
 
@@ -77,5 +93,5 @@ vec3 calculate_specular_light(vec3 light_dir, vec3 normalised_normal){
     vec3 specular_map_intensity = vec3(texture(material.specular, texture_coordinates));
     vec3 specular_light_intensity = light.specular * specular_light_intensity_multiplier * specular_map_intensity;
 
-    return specular_light_intensity;
+    return attenuation * specular_light_intensity;
 }
