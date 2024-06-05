@@ -298,7 +298,10 @@ void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO,
         main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
         main_shader.set_float("material.shininess", 32.0f);
 
-        main_shader.set_vec3("light.position", light_position);
+        main_shader.set_vec3("light.position", cameraPos);
+        main_shader.set_vec3("light.direction", cameraFront);
+        main_shader.set_float("light.cutoff", glm::cos(glm::radians(5.5)));
+        main_shader.set_float("light.outer_cutoff", glm::cos(glm::radians(12.5)));
         main_shader.set_vec3("light.ambient", vec3(0.2f, 0.2f, 0.2f));
         main_shader.set_vec3("light.diffuse", vec3(0.5f, 0.5f, 0.5f));
         main_shader.set_vec3("light.specular", vec3(1.0f, 1.0f, 1.0f));
