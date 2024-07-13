@@ -10,8 +10,6 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
-#include <fstream>
-#include <sstream>
 using namespace std;
 using namespace glm;
 
@@ -285,8 +283,6 @@ void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO,
 
         draw_cube(main_shader, main_VAO, main_cube_pos, 0.0f);
         draw_cube(main_shader, main_VAO, secondary_cube_pos, 55.6f);
-        main_shader.set_vec3("object_color", vec3(1.0f, 0.5f, 0.31f));
-        main_shader.set_vec3("light_color", vec3(1.0f, 1.0f, 1.0f));
         main_shader.set_vec3("viewPos", cameraPos);
 
         glActiveTexture(GL_TEXTURE0);
@@ -298,16 +294,20 @@ void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO,
         main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
         main_shader.set_float("material.shininess", 32.0f);
 
-        main_shader.set_vec3("light.position", cameraPos);
-        main_shader.set_vec3("light.direction", cameraFront);
-        main_shader.set_float("light.cutoff", glm::cos(glm::radians(5.5)));
-        main_shader.set_float("light.outer_cutoff", glm::cos(glm::radians(12.5)));
-        main_shader.set_vec3("light.ambient", vec3(0.2f, 0.2f, 0.2f));
-        main_shader.set_vec3("light.diffuse", vec3(0.5f, 0.5f, 0.5f));
-        main_shader.set_vec3("light.specular", vec3(1.0f, 1.0f, 1.0f));
-        main_shader.set_float("light.constant", 1.0f);
-        main_shader.set_float("light.linear", 0.09f);
-        main_shader.set_float("light.quadratic", 0.032f);
+        // Directional light shader inputs
+        main_shader.set_vec3("directional_light.direction", cameraFront);
+        main_shader.set_vec3("directional_light.ambient", vec3(0.2f, 0.2f, 0.2f));
+        main_shader.set_vec3("directional_light.diffuse", vec3(0.5f, 0.5f, 0.5f));
+        main_shader.set_vec3("directional_light.specular", vec3(1.0f, 1.0f, 1.0f));
+
+        // Point light shader inputs
+        main_shader.set_float("point_light.constant", 1.0f);        
+        main_shader.set_float("point_light.linear", 0.09f); 
+        main_shader.set_float("point_light.quadratic", 0.032f); 
+        main_shader.set_vec3("point_light.position", cameraPos);
+        main_shader.set_vec3("point_light", vec3(0.2f, 0.2f, 0.2f));        
+        main_shader.set_vec3("point_light", vec3(0.5f, 0.5f, 0.5f));
+        main_shader.set_vec3("point_light", vec3(1.0f, 1.0f, 1.0f));
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -335,8 +335,8 @@ int main()
     link_vertex_attributes();
 
     // Load our shader programs
-    Shader new_shader("X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\vertex.vert",
-                      "X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\fragment.frag");
+    Shader new_shader("X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\vertex.glsl",
+                      "X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\fragment.glsl");
 
     Texture diffuse_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2.png",
                         GL_RGB,

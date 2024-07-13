@@ -1,0 +1,38 @@
+[
+{
+  "directory": "X:/Side projects/OpenGL learning/openGL-template/compile_includes",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -I\"X:/Side projects/OpenGL learning/openGL-template/include\" -o CMakeFiles\\engine.dir\\src\\Shader.cpp.obj -c \"X:\\Side projects\\OpenGL learning\\openGL-template\\src\\Shader.cpp\"",
+  "file": "X:\\Side projects\\OpenGL learning\\openGL-template\\src\\Shader.cpp",
+  "output": "CMakeFiles\\engine.dir\\src\\Shader.cpp.obj"
+},
+{
+  "directory": "X:/Side projects/OpenGL learning/openGL-template/compile_includes",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -I\"X:/Side projects/OpenGL learning/openGL-template/include\" -o CMakeFiles\\engine.dir\\src\\Textures.cpp.obj -c \"X:\\Side projects\\OpenGL learning\\openGL-template\\src\\Textures.cpp\"",
+  "file": "X:\\Side projects\\OpenGL learning\\openGL-template\\src\\Textures.cpp",
+  "output": "CMakeFiles\\engine.dir\\src\\Textures.cpp.obj"
+},
+{
+  "directory": "X:/Side projects/OpenGL learning/openGL-template/compile_includes",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -I\"X:/Side projects/OpenGL learning/openGL-template/include\" -o CMakeFiles\\engine.dir\\src\\camera.cpp.obj -c \"X:\\Side projects\\OpenGL learning\\openGL-template\\src\\camera.cpp\"",
+  "file": "X:\\Side projects\\OpenGL learning\\openGL-template\\src\\camera.cpp",
+  "output": "CMakeFiles\\engine.dir\\src\\camera.cpp.obj"
+},
+{
+  "directory": "X:/Side projects/OpenGL learning/openGL-template/compile_includes",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -I\"X:/Side projects/OpenGL learning/openGL-template/include\" -o CMakeFiles\\engine.dir\\src\\glad.cpp.obj -c \"X:\\Side projects\\OpenGL learning\\openGL-template\\src\\glad.cpp\"",
+  "file": "X:\\Side projects\\OpenGL learning\\openGL-template\\src\\glad.cpp",
+  "output": "CMakeFiles\\engine.dir\\src\\glad.cpp.obj"
+},
+{
+  "directory": "X:/Side projects/OpenGL learning/openGL-template/compile_includes",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -I\"X:/Side projects/OpenGL learning/openGL-template/include\" -o CMakeFiles\\engine.dir\\src\\main.cpp.obj -c \"X:\\Side projects\\OpenGL learning\\openGL-template\\src\\main.cpp\"",
+  "file": "X:\\Side projects\\OpenGL learning\\openGL-template\\src\\main.cpp",
+  "output": "CMakeFiles\\engine.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "X:/Side projects/OpenGL learning/openGL-template/compile_includes",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -I\"X:/Side projects/OpenGL learning/openGL-template/include\" -o CMakeFiles\\engine.dir\\src\\stb_image.cpp.obj -c \"X:\\Side projects\\OpenGL learning\\openGL-template\\src\\stb_image.cpp\"",
+  "file": "X:\\Side projects\\OpenGL learning\\openGL-template\\src\\stb_image.cpp",
+  "output": "CMakeFiles\\engine.dir\\src\\stb_image.cpp.obj"
+}
+]

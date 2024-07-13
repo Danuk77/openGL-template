@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 project(test_engine)
-# Include all the header files for glad, glfw and others
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Add the executable
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)

@@ -1,0 +1,3 @@
+X:/Side projects/OpenGL learning/openGL-template/compile_includes/CMakeFiles/engine.dir
+X:/Side projects/OpenGL learning/openGL-template/compile_includes/CMakeFiles/edit_cache.dir
+X:/Side projects/OpenGL learning/openGL-template/compile_includes/CMakeFiles/rebuild_cache.dir
