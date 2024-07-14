@@ -318,7 +318,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\src\glad.cpp" />
     <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\src\main.cpp" />
     <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\src\stb_image.cpp" />
-    <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\models\vertex.cpp" />
+    <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\models\Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="X:\Side projects\OpenGL learning\openGL-template\build\ZERO_CHECK.vcxproj">

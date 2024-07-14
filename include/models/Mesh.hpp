@@ -3,6 +3,7 @@
 #include <models/Texture.hpp>
 #include <models/Vertex.hpp>
 #include <vector>
+#include <glad/glad.h>
 
 class Mesh{
 public:
@@ -34,6 +35,7 @@ private:
 
   void load_textures_into_buffers(Shader shader);
   void load_diffuse_maps(Shader shader);
+  void load_texture(Texture texture, unsigned int texture_index, Shader shader);
   void load_specular_maps(Shader shader);
 
   void draw_elements();

@@ -98,28 +98,40 @@ void Mesh::draw(Shader &shader){
 }
 
 // The convention used for a texture uniform in the GLSL shader -> <diffuse/specular>_<texture_name>
-// TODO: incomplete 
 void Mesh::load_textures_into_buffers(Shader shader){
   load_diffuse_maps(shader);
   load_specular_maps(shader);
 }
 
 void Mesh::load_diffuse_maps(Shader shader){
-  std::vector<Texture>::iterator diffuse_map_iterator;
-
-  for(diffuse_map_iterator = diffuse_maps.begin(); diffuse_map_iterator != diffuse_maps.end(); diffuse_map_iterator++){
-    shader.set_int(diffuse_map_iterator->texture_name, diffuse_map_iterator->texture_id);
+  for (unsigned int i = 0; i < diffuse_maps.size(); i++){
+    load_texture(diffuse_maps[i], i, shader); 
   }
+  
+  glActiveTexture(GL_TEXTURE0);
+}
+
+void Mesh::load_texture(Texture texture, unsigned int texture_index, Shader shader){
+  auto texture_constant_index = GL_TEXTURE0 + texture_index;
+  glActiveTexture(texture_constant_index);
+  shader.set_int(texture.texture_name.c_str(), texture_index);
+  glBindTexture(GL_TEXTURE_2D, texture.texture_id);
 }
 
 void Mesh::load_specular_maps(Shader shader){
-  std::vector<Texture>::iterator specular_map_iterator;
+  // Start setting the texture constant from where we left off on diffuse maps
+  unsigned int texture_constant_index_start = diffuse_maps.size();
 
-  for(specular_map_iterator = specular_maps.begin(); specular_map_iterator != specular_maps.end(); specular_map_iterator++){
-    shader.set_int(specular_map_iterator->texture_name, specular_map_iterator->texture_id);
+  for (unsigned int i = 0; i < specular_maps.size(); i++){
+    load_texture(specular_maps[i], texture_constant_index_start + i, shader); 
   }
+  
+  glActiveTexture(GL_TEXTURE0);
+
 }
 
 void Mesh::draw_elements(){
-
+  glBindVertexArray(vertex_array_object);
+  glad_glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+  glBindVertexArray(0);
 }

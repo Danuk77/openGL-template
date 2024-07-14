@@ -19,7 +19,7 @@
     <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\src\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\models\vertex.cpp">
+    <ClCompile Include="X:\Side projects\OpenGL learning\openGL-template\models\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
