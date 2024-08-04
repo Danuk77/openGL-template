@@ -1,10 +1,11 @@
+#include "models/Mesh.hpp"
 #define GLFW_USE_WIN32
 #include <glad/glad.h>
 // Make sure to include glad before any other libraries that depend on opengl
 #include <GLFW/glfw3.h>
 #include <shader/Shader.hpp>
 #include <stb/stb_image.h>
-#include <textures/Textures.hpp>
+#include <textures/TextureLoader.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -271,7 +272,7 @@ void draw_cube(Shader shader, unsigned int VAO, vec3 pos, float angle)
 }
 
 // The main render loop.
-void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO, Texture diffuse_map, Texture specular_map)
+void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO, TextureLoader diffuse_map, TextureLoader specular_map)
 {
     // Main render loop
     while (!glfwWindowShouldClose(window))
@@ -339,12 +340,12 @@ int main()
     Shader new_shader("X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\vertex.glsl",
                       "X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\fragment.glsl");
 
-    Texture diffuse_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2.png",
+    TextureLoader diffuse_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2.png",
                         GL_RGB,
                         GL_RGBA,
                         false);
 
-    Texture specular_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2_specular.png",
+    TextureLoader specular_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2_specular.png",
                          GL_RGB,
                          GL_RGBA,
                          false);
