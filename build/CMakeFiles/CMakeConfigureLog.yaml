@@ -26,7 +26,7 @@ events:
       Microsoft (R) Build Engine version 16.3.2+e481bbf88 for .NET Framework
       Copyright (C) Microsoft Corporation. All rights reserved.
       
-      Build started 11/07/2024 23:00:37.
+      Build started 19/08/2024 21:52:09.
       Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\3.28.0-rc4\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
@@ -52,7 +52,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.88
+      Time Elapsed 00:00:00.93
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -80,7 +80,7 @@ events:
       Microsoft (R) Build Engine version 16.3.2+e481bbf88 for .NET Framework
       Copyright (C) Microsoft Corporation. All rights reserved.
       
-      Build started 11/07/2024 23:00:38.
+      Build started 19/08/2024 21:52:10.
       Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\3.28.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
@@ -106,7 +106,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.70
+      Time Elapsed 00:00:00.72
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -125,49 +125,53 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-s7euap"
-      binary: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-s7euap"
+      source: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-0jvwbv"
+      binary: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-0jvwbv"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "X:/Side projects/OpenGL learning/openGL-template/build/vcpkg_installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "X:/vcpkg"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-s7euap'
+        Change Dir: 'X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-0jvwbv'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe" cmTC_b6de3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe" cmTC_88423.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         Microsoft (R) Build Engine version 16.3.2+e481bbf88 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 11/07/2024 23:00:39.
-        Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7euap\\cmTC_b6de3.vcxproj" on node 1 (default targets).
+        Build started 19/08/2024 21:52:11.
+        Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0jvwbv\\cmTC_88423.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_b6de3.dir\\Debug\\".
-          Creating directory "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7euap\\Debug\\".
-          Creating directory "cmTC_b6de3.dir\\Debug\\cmTC_b6de3.tlog\\".
+          Creating directory "cmTC_88423.dir\\Debug\\".
+          Creating directory "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0jvwbv\\Debug\\".
+          Creating directory "cmTC_88423.dir\\Debug\\cmTC_88423.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_b6de3.dir\\Debug\\cmTC_b6de3.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_88423.dir\\Debug\\cmTC_88423.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b6de3.dir\\Debug\\\\" /Fd"cmTC_b6de3.dir\\Debug\\vc142.pdb" /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_88423.dir\\Debug\\\\" /Fd"cmTC_88423.dir\\Debug\\vc142.pdb" /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.23.28107 for x64
           CMakeCCompilerABI.c
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b6de3.dir\\Debug\\\\" /Fd"cmTC_b6de3.dir\\Debug\\vc142.pdb" /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_88423.dir\\Debug\\\\" /Fd"cmTC_88423.dir\\Debug\\vc142.pdb" /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7euap\\Debug\\cmTC_b6de3.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-s7euap/Debug/cmTC_b6de3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-s7euap/Debug/cmTC_b6de3.lib" /MACHINE:X64  /machine:x64 cmTC_b6de3.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_b6de3.vcxproj -> X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7euap\\Debug\\cmTC_b6de3.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0jvwbv\\Debug\\cmTC_88423.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-0jvwbv/Debug/cmTC_88423.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-0jvwbv/Debug/cmTC_88423.lib" /MACHINE:X64  /machine:x64 cmTC_88423.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_88423.vcxproj -> X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0jvwbv\\Debug\\cmTC_88423.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_b6de3.dir\\Debug\\cmTC_b6de3.tlog\\unsuccessfulbuild".
-          Touching "cmTC_b6de3.dir\\Debug\\cmTC_b6de3.tlog\\cmTC_b6de3.lastbuildstate".
-        Done Building Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7euap\\cmTC_b6de3.vcxproj" (default targets).
+          Deleting file "cmTC_88423.dir\\Debug\\cmTC_88423.tlog\\unsuccessfulbuild".
+          Touching "cmTC_88423.dir\\Debug\\cmTC_88423.tlog\\cmTC_88423.lastbuildstate".
+        Done Building Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0jvwbv\\cmTC_88423.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.66
+        Time Elapsed 00:00:00.71
         
       exitCode: 0
   -
@@ -179,49 +183,53 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-hnfqc9"
-      binary: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-hnfqc9"
+      source: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-m24boz"
+      binary: "X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-m24boz"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "X:/Side projects/OpenGL learning/openGL-template/build/vcpkg_installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "X:/vcpkg"
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-hnfqc9'
+        Change Dir: 'X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-m24boz'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe" cmTC_d6c9d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe" cmTC_31f96.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         Microsoft (R) Build Engine version 16.3.2+e481bbf88 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 11/07/2024 23:00:40.
-        Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnfqc9\\cmTC_d6c9d.vcxproj" on node 1 (default targets).
+        Build started 19/08/2024 21:52:12.
+        Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m24boz\\cmTC_31f96.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_d6c9d.dir\\Debug\\".
-          Creating directory "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnfqc9\\Debug\\".
-          Creating directory "cmTC_d6c9d.dir\\Debug\\cmTC_d6c9d.tlog\\".
+          Creating directory "cmTC_31f96.dir\\Debug\\".
+          Creating directory "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m24boz\\Debug\\".
+          Creating directory "cmTC_31f96.dir\\Debug\\cmTC_31f96.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_d6c9d.dir\\Debug\\cmTC_d6c9d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_31f96.dir\\Debug\\cmTC_31f96.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d6c9d.dir\\Debug\\\\" /Fd"cmTC_d6c9d.dir\\Debug\\vc142.pdb" /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_31f96.dir\\Debug\\\\" /Fd"cmTC_31f96.dir\\Debug\\vc142.pdb" /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.23.28107 for x64
           CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d6c9d.dir\\Debug\\\\" /Fd"cmTC_d6c9d.dir\\Debug\\vc142.pdb" /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_31f96.dir\\Debug\\\\" /Fd"cmTC_31f96.dir\\Debug\\vc142.pdb" /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnfqc9\\Debug\\cmTC_d6c9d.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-hnfqc9/Debug/cmTC_d6c9d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-hnfqc9/Debug/cmTC_d6c9d.lib" /MACHINE:X64  /machine:x64 cmTC_d6c9d.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_d6c9d.vcxproj -> X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnfqc9\\Debug\\cmTC_d6c9d.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.23.28105\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m24boz\\Debug\\cmTC_31f96.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-m24boz/Debug/cmTC_31f96.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:/Side projects/OpenGL learning/openGL-template/build/CMakeFiles/CMakeScratch/TryCompile-m24boz/Debug/cmTC_31f96.lib" /MACHINE:X64  /machine:x64 cmTC_31f96.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_31f96.vcxproj -> X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m24boz\\Debug\\cmTC_31f96.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_d6c9d.dir\\Debug\\cmTC_d6c9d.tlog\\unsuccessfulbuild".
-          Touching "cmTC_d6c9d.dir\\Debug\\cmTC_d6c9d.tlog\\cmTC_d6c9d.lastbuildstate".
-        Done Building Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnfqc9\\cmTC_d6c9d.vcxproj" (default targets).
+          Deleting file "cmTC_31f96.dir\\Debug\\cmTC_31f96.tlog\\unsuccessfulbuild".
+          Touching "cmTC_31f96.dir\\Debug\\cmTC_31f96.tlog\\cmTC_31f96.lastbuildstate".
+        Done Building Project "X:\\Side projects\\OpenGL learning\\openGL-template\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m24boz\\cmTC_31f96.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.69
+        Time Elapsed 00:00:00.70
         
       exitCode: 0
 ...

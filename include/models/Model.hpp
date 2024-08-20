@@ -15,7 +15,7 @@
 
 class Model{
 public:
-  Model(char *path);
+  Model(const char *path);
   void draw(Shader &shader);
 
 private:
@@ -31,7 +31,6 @@ private:
 
   void parse_model_meshes();
   void recursively_parse_model_meshses(aiNode* node, const aiScene* scene);
-  void recursively_parse_model_materials(aiNode* node, const aiScene* scene);
   void parse_mesh_in_node(aiNode* node, const aiScene* scene, unsigned int index);
   Mesh convert_assimp_mesh_to_engine_mesh(aiMesh* mesh, const aiScene* scene);
 
@@ -44,8 +43,8 @@ private:
   void parse_face(aiFace face, vector<unsigned int> &indices);
   std::vector<Texture> parse_textures(aiMesh *mesh, const aiScene *scene);
   void parse_material_texture_by_type(aiMaterial *material, aiTextureType texture_type, TextureType internal_texture_type, std::vector<Texture> &textures); 
-  void load_texture(aiString* texture_path, unsigned int texture_index, TextureType internal_texture_type, std::vector<Texture> textures);
-  bool check_if_texture_already_loaded(aiString* texture_path);
-  unsigned int find_loaded_model_index(aiString *texture_path);
-  Texture parse_aiTexture_into_engine_texture(aiString *aiTexture_path, TextureType internal_texture_type, unsigned int index);
+  void load_texture(aiString texture_path, unsigned int texture_index, TextureType internal_texture_type, std::vector<Texture> textures);
+  bool check_if_texture_already_loaded(aiString texture_path);
+  unsigned int find_loaded_model_index(aiString texture_path);
+  Texture parse_aiTexture_into_engine_texture(aiString aiTexture_path, TextureType internal_texture_type, unsigned int index);
   };

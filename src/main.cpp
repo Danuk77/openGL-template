@@ -1,7 +1,7 @@
-#include "models/Mesh.hpp"
+#include "models/Model.hpp"
 #define GLFW_USE_WIN32
-#include <glad/glad.h>
 // Make sure to include glad before any other libraries that depend on opengl
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <shader/Shader.hpp>
 #include <stb/stb_image.h>
@@ -121,100 +121,6 @@ GLFWwindow *initialise()
     return window;
 }
 
-// Creates a simple triangle to render.
-void create_triangle()
-{
-    // The vertices of the triangle we want to render
-    float vertices[] = {
-        0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,   // top right
-        0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
-        -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f   // top left
-    };
-
-    unsigned int indices[] = {
-        // note that we start from 0!
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
-    };
-
-    // Copy the vertices from 'vertices' to the vertex buffer
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    // Copy the indices from 'indices' to the index buffer
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-}
-
-void create_cube()
-{
-    float vertices[] = {
-        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f,
-        0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,
-        0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,
-        -0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
-
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-        0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-        -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-
-        -0.5f, 0.5f, 0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-
-        -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f,
-        0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-        0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,
-
-        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-        0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
-        0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f};
-
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-}
-
-void link_vertex_attributes()
-{
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0);
-    glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
-}
-
-unsigned int create_VAO()
-{
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-
-    glBindVertexArray(VAO);
-
-    return VAO;
-}
-
 void mouse_callback(GLFWwindow *window, double xpos, double ypos)
 {
     // Initialise the values in the first time the callback is called
@@ -249,71 +155,47 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos)
     cameraFront = normalize(direction);
 }
 
-void draw_cube(Shader shader, unsigned int VAO, vec3 pos, float angle)
-{
-    glBindVertexArray(VAO);
-    mat4 model(1.0f);
-    mat4 projection;
-    mat4 view;
-
-    shader.use();
-
-    projection = perspective(radians(45.0f), 800.0f / 600.0f, 0.01f, 100.0f);
-    view = lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
-    model = translate(model, pos);
-    model = rotate(model, radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-
-    shader.set_mat4("projection", projection);
-    shader.set_mat4("model", model);
-    shader.set_mat4("view", view);
-
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-}
-
 // The main render loop.
-void render_loop(GLFWwindow *&window, Shader main_shader, unsigned int main_VAO, TextureLoader diffuse_map, TextureLoader specular_map)
+void render_loop(GLFWwindow *&window, Shader main_shader)
 {
-    // Main render loop
-    while (!glfwWindowShouldClose(window))
-    {
-        // Process the user's input
-        process_input(window);
+  std::string test_model_path = "X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\backpack\\backpack.obj";
 
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  //Load the model for testing
+  Model test_model(test_model_path.c_str());
 
-        draw_cube(main_shader, main_VAO, main_cube_pos, 0.0f);
-        draw_cube(main_shader, main_VAO, secondary_cube_pos, 55.6f);
-        main_shader.set_vec3("viewPos", cameraPos);
+  // Main render loop
+  while (!glfwWindowShouldClose(window))
+  {
+      // Process the user's input
+      process_input(window);
 
-        glActiveTexture(GL_TEXTURE0);
-        diffuse_map.bind(GL_TEXTURE_2D);
+      glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glActiveTexture(GL_TEXTURE1);
-        specular_map.bind(GL_TEXTURE_2D);
+      main_shader.set_vec3("viewPos", cameraPos);
+      test_model.draw(main_shader);
+      
+      main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
+      main_shader.set_float("material.shininess", 32.0f);
 
-        main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
-        main_shader.set_float("material.shininess", 32.0f);
+      // Directional light shader inputs
+      main_shader.set_vec3("directional_light.direction", cameraFront);
+      main_shader.set_vec3("directional_light.ambient", vec3(0.2f, 0.2f, 0.2f));
+      main_shader.set_vec3("directional_light.diffuse", vec3(0.5f, 0.5f, 0.5f));
+      main_shader.set_vec3("directional_light.specular", vec3(1.0f, 1.0f, 1.0f));
 
-        // Directional light shader inputs
-        main_shader.set_vec3("directional_light.direction", cameraFront);
-        main_shader.set_vec3("directional_light.ambient", vec3(0.2f, 0.2f, 0.2f));
-        main_shader.set_vec3("directional_light.diffuse", vec3(0.5f, 0.5f, 0.5f));
-        main_shader.set_vec3("directional_light.specular", vec3(1.0f, 1.0f, 1.0f));
+      // Point light shader inputs
+      main_shader.set_float("point_light.constant", 1.0f);        
+      main_shader.set_float("point_light.linear", 0.09f); 
+      main_shader.set_float("point_light.quadratic", 0.032f); 
+      main_shader.set_vec3("point_light.position", cameraPos);
+      main_shader.set_vec3("point_light", vec3(0.2f, 0.2f, 0.2f));        
+      main_shader.set_vec3("point_light", vec3(0.5f, 0.5f, 0.5f));
+      main_shader.set_vec3("point_light", vec3(1.0f, 1.0f, 1.0f));
 
-        // Point light shader inputs
-        main_shader.set_float("point_light.constant", 1.0f);        
-        main_shader.set_float("point_light.linear", 0.09f); 
-        main_shader.set_float("point_light.quadratic", 0.032f); 
-        main_shader.set_vec3("point_light.position", cameraPos);
-        main_shader.set_vec3("point_light", vec3(0.2f, 0.2f, 0.2f));        
-        main_shader.set_vec3("point_light", vec3(0.5f, 0.5f, 0.5f));
-        main_shader.set_vec3("point_light", vec3(1.0f, 1.0f, 1.0f));
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+      glfwSwapBuffers(window);
+      glfwPollEvents();
+  }
 }
 
 int main()
@@ -325,40 +207,12 @@ int main()
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetCursorPosCallback(window, mouse_callback);
 
-    unsigned int VAO = create_VAO();
-
-    // Initialise the vertex buffer object for storing our triangle within the GPU
-    unsigned int VBO; //, EBO;
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-    // For the main cube
-    create_cube();
-    link_vertex_attributes();
-
     // Load our shader programs
     Shader new_shader("X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\vertex.glsl",
                       "X:\\Side projects\\OpenGL learning\\openGL-template\\shaders\\fragment.glsl");
 
-    TextureLoader diffuse_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2.png",
-                        GL_RGB,
-                        GL_RGBA,
-                        false);
-
-    TextureLoader specular_map("X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\container2_specular.png",
-                         GL_RGB,
-                         GL_RGBA,
-                         false);
-
-    new_shader.use();
-    new_shader.set_int("material.diffuse", 0);
-    new_shader.set_int("material.specular", 1);
-
     // Call the render loop
-    render_loop(window, new_shader, VAO, diffuse_map, specular_map);
-
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    render_loop(window, new_shader);
 
     // Free up the resources once instructed to close
     glfwTerminate();

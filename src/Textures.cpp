@@ -41,7 +41,7 @@ TextureLoader::TextureLoader(const char *loc, int color_mode, int input_color_mo
 
 TextureLoader::TextureLoader(const char *path, const string &directory){
   string filename = string(path);
-  filename = directory + "/" + filename;
+  filename = directory + "\\" + filename;
 
   load_file_data(filename.c_str());
 }
@@ -53,6 +53,7 @@ void TextureLoader::load_file_data(const char *path){
 
   // Fail early check to see if the data was loaded
   if(!texture_data){
+    std::cerr << "Failed to load texture at " + string(path) << std::endl;
     throw std::runtime_error("Failed to load texture at " + string(path));
     stbi_image_free(texture_data);
   }
