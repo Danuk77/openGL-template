@@ -25,8 +25,8 @@ void Model::set_model_directory(string path){
 }
 
 const aiScene* Model::read_model_file(string path){
-  const aiScene *scene = model_importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
-  
+  // const aiScene *scene = model_importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+  const aiScene *scene = model_importer.ReadFile(path, aiProcess_Triangulate); 
   return scene;
 }
 

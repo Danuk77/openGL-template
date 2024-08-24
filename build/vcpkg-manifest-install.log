@@ -1,7 +1,7 @@
 Detecting compiler hash for triplet x64-windows...
 Compiler found: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.23.28105/bin/Hostx64/x64/cl.exe
 All requested packages are currently installed.
-Total install time: 1.5 us
+Total install time: 2.4 us
 assimp provides CMake targets:
 
   # this is heuristically generated, and may not be correct
