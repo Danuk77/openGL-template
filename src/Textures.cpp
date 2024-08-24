@@ -61,7 +61,7 @@ void TextureLoader::load_file_data(const char *path){
   try{
     format = identify_format(number_of_channels);
   }catch(std::runtime_error e){
-    cout << e.what() << std::endl; 
+    std::cout << e.what() << std::endl; 
   }
 
   bind_texture(texture_data, format, width, height);

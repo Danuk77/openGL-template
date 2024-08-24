@@ -32,11 +32,6 @@ float yaw_angle = -90;
 bool firstMouse = true;
 const float sensitivity = 0.1f; // Mouse sensitivity
 
-vec3 main_cube_pos = vec3(0.0f, 1.0f, -1.0f);
-vec3 secondary_cube_pos = glm::vec3(2.4f, -0.4f, -6.5f);
-vec3 light_direction = vec3(-0.2f, -1.0f, -0.3f);
-vec3 light_position = vec3(0.0f, 0.0f, 0.0f);
-
 // Callback function to handle the window resizing.
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -158,9 +153,8 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos)
 // The main render loop.
 void render_loop(GLFWwindow *&window, Shader main_shader)
 {
-  std::string test_model_path = "X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\backpack\\backpack.obj";
-
   //Load the model for testing
+  std::string test_model_path = "X:\\Side projects\\OpenGL learning\\openGL-template\\textures\\backpack\\backpack.obj";
   Model test_model(test_model_path.c_str());
 
   // Main render loop
@@ -172,27 +166,24 @@ void render_loop(GLFWwindow *&window, Shader main_shader)
       glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-      main_shader.set_vec3("viewPos", cameraPos);
+      main_shader.use();
+
+      mat4 projection;
+      mat4 view;
+      
+      projection = perspective(radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+      view = lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
+      glm::mat4 model = glm::mat4(1.0f);
+      model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+      model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+
+      main_shader.set_mat4("projection", projection);
+      main_shader.set_mat4("model", model);
+      main_shader.set_mat4("view", view); 
+
       test_model.draw(main_shader);
       
-      main_shader.set_vec3("material.specular", vec3(0.5f, 0.5f, 0.5f));
-      main_shader.set_float("material.shininess", 32.0f);
-
-      // Directional light shader inputs
-      main_shader.set_vec3("directional_light.direction", cameraFront);
-      main_shader.set_vec3("directional_light.ambient", vec3(0.2f, 0.2f, 0.2f));
-      main_shader.set_vec3("directional_light.diffuse", vec3(0.5f, 0.5f, 0.5f));
-      main_shader.set_vec3("directional_light.specular", vec3(1.0f, 1.0f, 1.0f));
-
-      // Point light shader inputs
-      main_shader.set_float("point_light.constant", 1.0f);        
-      main_shader.set_float("point_light.linear", 0.09f); 
-      main_shader.set_float("point_light.quadratic", 0.032f); 
-      main_shader.set_vec3("point_light.position", cameraPos);
-      main_shader.set_vec3("point_light", vec3(0.2f, 0.2f, 0.2f));        
-      main_shader.set_vec3("point_light", vec3(0.5f, 0.5f, 0.5f));
-      main_shader.set_vec3("point_light", vec3(1.0f, 1.0f, 1.0f));
-
       glfwSwapBuffers(window);
       glfwPollEvents();
   }

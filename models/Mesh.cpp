@@ -35,8 +35,13 @@ void Mesh::store_texture(Texture texture){
 
 void Mesh::initialize_mesh(){
   generate_buffers();
+  glBindVertexArray(vertex_array_object);
+
   populate_buffers();
   link_vertex_attributes();
+
+  // Bind to empty array so that elsewhere will not be modifying the current vertex array object
+  glBindVertexArray(0);
 }
 
 void Mesh::generate_buffers(){
@@ -46,13 +51,8 @@ void Mesh::generate_buffers(){
 }
 
 void Mesh::populate_buffers(){
-  glBindVertexArray(vertex_array_object);
-  
   populate_vertex_buffer();
   populate_element_buffer();
-
-  // Bind to empty array so that elsewhere will not be modifying the current vertex array object
-  glBindVertexArray(0);
 }
 
 void Mesh::populate_vertex_buffer(){
@@ -98,12 +98,12 @@ void Mesh::draw(Shader &shader){
 }
 
 // The convention used for a texture uniform in the GLSL shader -> <diffuse/specular>_<texture_name>
-void Mesh::load_textures_into_buffers(Shader shader){
+void Mesh::load_textures_into_buffers(Shader &shader){
   load_diffuse_maps(shader);
   load_specular_maps(shader);
 }
 
-void Mesh::load_diffuse_maps(Shader shader){
+void Mesh::load_diffuse_maps(Shader &shader){
   for (unsigned int i = 0; i < diffuse_maps.size(); i++){
     load_texture(diffuse_maps[i], i, shader); 
   }
@@ -111,14 +111,14 @@ void Mesh::load_diffuse_maps(Shader shader){
   glActiveTexture(GL_TEXTURE0);
 }
 
-void Mesh::load_texture(Texture texture, unsigned int texture_index, Shader shader){
+void Mesh::load_texture(Texture texture, unsigned int texture_index, Shader &shader){
   auto texture_constant_index = GL_TEXTURE0 + texture_index;
   glActiveTexture(texture_constant_index);
   shader.set_int(texture.texture_name.c_str(), texture_index);
   glBindTexture(GL_TEXTURE_2D, texture.texture_id);
 }
 
-void Mesh::load_specular_maps(Shader shader){
+void Mesh::load_specular_maps(Shader &shader){
   // Start setting the texture constant from where we left off on diffuse maps
   unsigned int texture_constant_index_start = diffuse_maps.size();
 
@@ -132,6 +132,6 @@ void Mesh::load_specular_maps(Shader shader){
 
 void Mesh::draw_elements(){
   glBindVertexArray(vertex_array_object);
-  glad_glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+  glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
   glBindVertexArray(0);
 }

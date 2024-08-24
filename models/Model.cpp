@@ -224,6 +224,14 @@ Texture Model::parse_aiTexture_into_engine_texture(aiString aiTexture_path, Text
   return texture;
 }
 
+unsigned int Model::number_of_meshes(){
+  return meshes.size();
+}
+
+Mesh Model::peek(){
+  return meshes.at(0);
+}
+
 void Model::draw(Shader &shader){
   vector<Mesh>::iterator mesh_iterator;
   

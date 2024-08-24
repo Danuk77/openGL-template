@@ -17,6 +17,8 @@ class Model{
 public:
   Model(const char *path);
   void draw(Shader &shader);
+  unsigned int number_of_meshes();
+  Mesh peek();
 
 private:
   vector<Mesh> meshes;
